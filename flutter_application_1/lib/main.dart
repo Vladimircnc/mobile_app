@@ -52,6 +52,9 @@ FlutterMap(
           options: MapOptions(
             initialCenter: LatLng(60.003565, 30.329334),
             initialZoom: 13.0,
+            maxZoom: 8,
+             onTap: (tapPosition, latLng) {
+          print('Tapped at: $latLng');}
           ),
           children: [
             TileLayer(
@@ -81,17 +84,7 @@ FlutterMap(
                         style: TextStyle(
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-
-      
+                        ), ), ], ) ), ], ), ], ),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 210, 179, 219),
         title: Text('TraidCompany'),
