@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'dostavka_Screen.dart';
 import 'prodaja_Screen.dart';
 import 'skupka_Screen.dart';
@@ -45,6 +47,51 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      body: 
+FlutterMap(
+          options: MapOptions(
+            initialCenter: LatLng(60.003565, 30.329334),
+            initialZoom: 13.0,
+          ),
+          children: [
+            TileLayer(
+              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+              userAgentPackageName: 'com.example.app',
+              subdomains: ['a', 'b', 'c'],
+            ),
+            RichAttributionWidget(
+              attributions: [
+                TextSourceAttribution('OpenStreetMap contributors'),
+              ],
+            ),
+            MarkerLayer(
+              markers: [
+                Marker(
+                  point: LatLng(60.003565, 30.329334),
+                  width: 80.0,
+                  height: 80.0,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.location_on, color: Colors.red, size: 40.0),
+                      SizedBox(height: 4.0),
+                      Text(
+                        'Санкт-Петербург,\nулица энгельса 23',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+
+      
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 210, 179, 219),
         title: Text('TraidCompany'),
